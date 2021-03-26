@@ -1,0 +1,29 @@
+﻿@using System.Web.Optimization
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @Styles.Render("~/styles/main")
+    @Scripts.Render("~/script/custom")
+    <Header>
+        <h1>Index page<span id="badge" class="badge badge-secondary"></span></h1>
+        <h2>Hello, @User.Identity.Name</h2>
+    </Header>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <button class="btn btn-primary"
+                data-href="@Url.Action("GetInfo", "Home")"
+                onclick="workModule.onGetStateClick(this)">
+            OK
+        </button>
+    }
+</body>
+</html>
